@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>rock paper scissors </title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+
+        const items = ['rock', 'paper', 'scissors'];
+        
+        function computerPlay() {
+            let randomIndex = Math.floor(Math.random() * items.length);
+            return items[randomIndex];
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            let lowerPlayerSelection = playerSelection.toLowerCase();
+            if (!(items.includes(lowerPlayerSelection))) {
+                return "That doesn't work. Please type in a valid move."
+            }
+
+            if (lowerPlayerSelection == 'rock' && computerSelection == 'scissors') {
+                console.log("You win! rock beats scissors");
+                return winRound; 
+             } else if (lowerPlayerSelection == 'scissors' && computerSelection == 'rock') {
+                 console.log("You lose. rock beats scissors");
+                 return loseRound;
+             } else if  (lowerPlayerSelection == 'paper' && computerSelection == 'rock') {
+                console.log("You win! paper beats rock.");
+                return winRound; 
+             } else if (lowerPlayerSelection == 'rock' && computerSelection == 'paper') {
+                console.log("You lose. paper beats rock.");
+                return loseRound;
+             } else if (lowerPlayerSelection == 'scissors' && computerSelection == 'paper') {
+                 console.log("You win. scissors beats paper.");
+                 return winRound;
+             } else if (lowerPlayerSelection == 'paper' && computerSelection == 'scissors') {
+                 console.log("You lose. scissors beats paper.");
+                 return loseRound;
+             } else if (lowerPlayerSelection == 'rock' && computerSelection == 'rock') {
+                 console.log("It's a tie!");
+                 return tieRound;
+             } else if (lowerPlayerSelection == 'paper' && computerSelection == 'paper') {
+                 console.log("It's a tie!");
+                 return tieRound;
+             } else if (lowerPlayerSelection == 'scissors' && computerSelection == 'scissors') {
+                 console.log("It's a tie!");
+                 return tieRound;
+             }
+        }   
+
+        let winRound = 0;
+        let loseRound = 1;
+        let tieRound = 2;
+
+
+        function game() {
+            let roundCount = 0;
+            let roundStatement = 'Round: ' + roundCount;
+
+            let userScore = 0;
+            //let userScoreWin = ++userScore;
+            let computerScore = 0;
+           // let computerScoreWin = ++computerScore;
+            let scoreStatement = "Current score: ";
+        // create a variable that displays the current score? 
+
+            for (let i = 0; i < 5; i++) {
+            let playerSelection = window.prompt("Make your move: rock, paper, or scissors?");
+            console.log(roundStatement + ++roundCount);   
+            let roundStatus = playRound(playerSelection, computerPlay());
+           if (roundStatus == winRound) {
+                console.log(scoreStatement + ++userScore + ',' + computerScore);
+            } else if (roundStatus == loseRound) {
+                console.log(scoreStatement + userScore + ',' + ++computerScore);
+            } else if (roundStatus == tieRound){
+                console.log(scoreStatement + userScore + ',' + computerScore);
+            } else
+            console.log("woohoooooooo"); 
+            }
+        }
+    
+
+           /* function gameover() {
+            if (userScore > computerScore) {
+                console.log("Game over. You win!: " + userScore + computerScore);
+            } else if (userScore < computerScore) {
+                console.log("Game over. You lose: " + userScore + computerScore);
+            } else if (userScore == computerScore) {
+                console.log("Game over. It was a tie: " + userScore + computerScore);
+            } else {
+                console.log("Something went wrong. It wasn\'t me.");
+            }
+            } 
+
+        /* TODO
+        x declare win, lose, tie variables
+        x change //return statements in playRound to console.log(message), then //return round state (Win, lose, tie)
+        x in game function, round state listed to tally points (win => user gets a point, lose => computer gets a point
+        tie => no points granted)
+        x create variables: userPoints, computerPoints to use above. 
+        - indicate game over; cannot play any more rounds. maybe start over? 
+        
+    
+
+    </script>
+</body>
+
+</html>
