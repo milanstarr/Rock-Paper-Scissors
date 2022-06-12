@@ -2,100 +2,143 @@
 <html>
 
 <head>
-    <title>rock paper scissors </title>
+  <title>rock paper scissors</title>
 </head>
 
 <body>
-    <script>
-        "use strict";
+  <script src="rps-ui.js">
+    "use strict";
 
-        const items = ['rock', 'paper', 'scissors'];
+    const items = ["rock", "paper", "scissors"];
 
-        function computerPlay() {
-            let randomIndex = Math.floor(Math.random() * items.length);
-            return items[randomIndex];
-        }
+    function computerPlay() {
+      let randomIndex = Math.floor(Math.random() * items.length);
+      return items[randomIndex];
+    }
 
-        function playRound(playerSelection, computerSelection) {
-            let lowerPlayerSelection = playerSelection.toLowerCase();
-            if (!(items.includes(lowerPlayerSelection))) {
-                return "That doesn't work. Please type in a valid move."
-            }
+    function playRound(playerSelection, computerSelection) {
+      let lowerPlayerSelection = playerSelection.toLowerCase();
+      if (!items.includes(lowerPlayerSelection)) {
+        return "That doesn't work. Please type in a valid move.";
+      }
 
-            if (lowerPlayerSelection == 'rock' && computerSelection == 'scissors') {
-                console.log("You win! rock beats scissors");
-                return winRound;
-            } else if (lowerPlayerSelection == 'scissors' && computerSelection == 'rock') {
-                console.log("You lose. rock beats scissors");
-                return loseRound;
-            } else if (lowerPlayerSelection == 'paper' && computerSelection == 'rock') {
-                console.log("You win! paper beats rock.");
-                return winRound;
-            } else if (lowerPlayerSelection == 'rock' && computerSelection == 'paper') {
-                console.log("You lose. paper beats rock.");
-                return loseRound;
-            } else if (lowerPlayerSelection == 'scissors' && computerSelection == 'paper') {
-                console.log("You win. scissors beats paper.");
-                return winRound;
-            } else if (lowerPlayerSelection == 'paper' && computerSelection == 'scissors') {
-                console.log("You lose. scissors beats paper.");
-                return loseRound;
-            } else if (lowerPlayerSelection == 'rock' && computerSelection == 'rock') {
-                console.log("It's a tie!");
-                return tieRound;
-            } else if (lowerPlayerSelection == 'paper' && computerSelection == 'paper') {
-                console.log("It's a tie!");
-                return tieRound;
-            } else if (lowerPlayerSelection == 'scissors' && computerSelection == 'scissors') {
-                console.log("It's a tie!");
-                return tieRound;
-            }
-        }
+      if (lowerPlayerSelection == "rock" && computerSelection == "scissors") {
+        console.log("You win! rock beats scissors");
+        return winRound;
+      } else if (
+        lowerPlayerSelection == "scissors" &&
+        computerSelection == "rock"
+      ) {
+        console.log("You lose. rock beats scissors");
+        return loseRound;
+      } else if (
+        lowerPlayerSelection == "paper" &&
+        computerSelection == "rock"
+      ) {
+        console.log("You win! paper beats rock.");
+        return winRound;
+      } else if (
+        lowerPlayerSelection == "rock" &&
+        computerSelection == "paper"
+      ) {
+        console.log("You lose. paper beats rock.");
+        return loseRound;
+      } else if (
+        lowerPlayerSelection == "scissors" &&
+        computerSelection == "paper"
+      ) {
+        console.log("You win. scissors beats paper.");
+        return winRound;
+      } else if (
+        lowerPlayerSelection == "paper" &&
+        computerSelection == "scissors"
+      ) {
+        console.log("You lose. scissors beats paper.");
+        return loseRound;
+      } else if (
+        lowerPlayerSelection == "rock" &&
+        computerSelection == "rock"
+      ) {
+        console.log("It's a tie!");
+        return tieRound;
+      } else if (
+        lowerPlayerSelection == "paper" &&
+        computerSelection == "paper"
+      ) {
+        console.log("It's a tie!");
+        return tieRound;
+      } else if (
+        lowerPlayerSelection == "scissors" &&
+        computerSelection == "scissors"
+      ) {
+        console.log("It's a tie!");
+        return tieRound;
+      }
+    }
 
-        let winRound = 0;
-        let loseRound = 1;
-        let tieRound = 2;
+    /*
+Below, I am defining a 'round enum'. 
+I am using the const declaration (instead of let) because the value of 
+winRound,loseRound, and tieRound will not change. The purpose of these 
+variables is to represent state (specifically the state of a round that is 
+won, lost, or tied). The value that is assigned to these enum variables are 
+arbitrary. all that matters is that the values are different. The value
+of the const variables can be integers, strings, char, etc.... it doesn't
+matter. it's just like a placeholder for a state (as mentioned earlier). 
 
+    */
 
-        function game() {
-            let roundCount = 0;
-            let roundStatement = 'Round: ' + roundCount;
+    const winRound = 'win';
+    const loseRound = 'lose';
+    const tieRound = 'tie';
 
-            let userScore = 0;
-            let computerScore = 0;
-            let scoreStatement = "Current score: ";
+    function game() {
+      let roundCount = 0;
+      let roundStatement = "Round: " + roundCount;
 
-            // 
-            console.log(`Current Score: ${userScore}, ${computerScore}`)
-            for (let i = 0; i < 5; i++) {
-                let playerSelection = window.prompt("Make your move: rock, paper, or scissors?");
-                console.log(roundStatement + ++roundCount);
-                let roundStatus = playRound(playerSelection, computerPlay());
-                if (roundStatus == winRound) {
-                    console.log(scoreStatement + ++userScore + ',' + computerScore);
-                } else if (roundStatus == loseRound) {
-                    console.log(scoreStatement + userScore + ',' + ++computerScore);
-                } else if (roundStatus == tieRound) {
-                    console.log(scoreStatement + userScore + ',' + computerScore);
-                } else {
-                    console.log("woohoooooooo");
-                }
-            }
+      let userScore = 0;
+      let computerScore = 0;
+      let scoreStatement = "Current score: ";
 
-            for (let i = 0; i = 6; i++) {
-                if (userScore > computerScore) {
-                    console.log("Game over. You win! Final Score: " + userScore + ',' + computerScore);
-                } else if (userScore < computerScore) {
-                    console.log("Game over. You lose. Final Score: " + userScore + ',' + computerScore);
-                } else if (userScore == computerScore) {
-                    console.log("Game over. It was a tie. Final Score: " + userScore + ',' + computerScore);
-                } else {
-                    console.log("Something went wrong. It wasn\'t me.");
-                }
-            }
-        }
+      /* 
+          console.log(`Current Score: ${userScore}, ${computerScore}`)
+          for (let i = 0; i < 5; i++) {
+              let playerSelection = window.prompt("Make your move: rock, paper, or scissors?");
+              console.log(roundStatement + ++roundCount);
+              let roundStatus = playRound(playerSelection, computerPlay());
+              if (roundStatus == winRound) {
+                  console.log(scoreStatement + ++userScore + ',' + computerScore);
+              } else if (roundStatus == loseRound) {
+                  console.log(scoreStatement + userScore + ',' + ++computerScore);
+              } else if (roundStatus == tieRound) {
+                  console.log(scoreStatement + userScore + ',' + computerScore);
+              } else {
+                  console.log("woohoooooooo");
+              }
+          }
+          */
 
-    </script>
+          <div id = 'points-display'></div> 
+
+      for (let i = 0; (i = 6); i++) {
+        if (userScore > computerScore) {
+          console.log(
+            "Game over. You win! Final Score: " +
+            userScore +
+            "," +
+            computerScore
+          );
+        } else if (userScore < computerScore) {
+          console.log("Game over. You lose. Final Score: " + userScore + "," +
+            computerScore);
+        } else if (userScore == computerScore) {
+          console.log("Game over. It was a tie. Final Score: " +
+            userScore + "," + computerScore);
+        } else { console.log("Something went wrong. It wasn't me."); }
+      }
+    } </script>
+
+  </script>
 </body>
 
 </html>
