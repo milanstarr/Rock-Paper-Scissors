@@ -20,37 +20,37 @@ function playRound(playerSelection, computerSelection) {
     lowerPlayerSelection == "scissors" &&
     computerSelection == "rock"
   ) {
-    console.log("You lose. rock beats scissors");
+    pointsDisplay.innerHTML = "You lose. rock beats scissors";
     return loseRound;
   } else if (lowerPlayerSelection == "paper" && computerSelection == "rock") {
-    console.log("You win! paper beats rock.");
+    pointsDisplay.innerHTML = "You win! paper beats rock.";
     return winRound;
   } else if (lowerPlayerSelection == "rock" && computerSelection == "paper") {
-    console.log("You lose. paper beats rock.");
+    pointsDisplay.innerHTML = "You lose. paper beats rock.";
     return loseRound;
   } else if (
     lowerPlayerSelection == "scissors" &&
     computerSelection == "paper"
   ) {
-    console.log("You win. scissors beats paper.");
+    pointsDisplay.innerHTML = "You win. scissors beats paper.";
     return winRound;
   } else if (
     lowerPlayerSelection == "paper" &&
     computerSelection == "scissors"
   ) {
-    console.log("You lose. scissors beats paper.");
+    pointsDisplay.innerHTML = "You lose. scissors beats paper.";
     return loseRound;
   } else if (lowerPlayerSelection == "rock" && computerSelection == "rock") {
-    console.log("It's a tie!");
+    pointsDisplay.innerHTML = "It's a tie!";
     return tieRound;
   } else if (lowerPlayerSelection == "paper" && computerSelection == "paper") {
-    console.log("It's a tie!");
+    pointsDisplay.innerHTML = "It's a tie!";
     return tieRound;
   } else if (
     lowerPlayerSelection == "scissors" &&
     computerSelection == "scissors"
   ) {
-    console.log("It's a tie!");
+    pointsDisplay.innerHTML = "It's a tie!";
     return tieRound;
   }
 }
