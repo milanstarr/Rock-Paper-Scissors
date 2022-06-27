@@ -2,6 +2,22 @@
 
 const items = ["rock", "paper", "scissors"];
 
+let roundCount = 0;
+let roundStatement = "Round: " + roundCount;
+
+let userScore = 0;
+let computerScore = 0;
+let scoreStatement = "Current score: ";
+
+const winRound = "win";
+const loseRound = "lose";
+const tieRound = "tie";
+
+//I wanted to create a variable so that I can just plug in the points update... but here,
+// it keeps the points static. Whereas I want it to be updated. idk how i can make this happen!
+//let winPointsUpdate = ++userScore + ',' + computerScore;
+
+
 function computerPlay() {
   let randomIndex = Math.floor(Math.random() * items.length);
   return items[randomIndex];
@@ -15,45 +31,57 @@ function playRound(playerSelection, computerSelection) {
 
   if (lowerPlayerSelection == "rock" && computerSelection == "scissors") {
     pointsDisplay.innerHTML = "You win! rock beats scissors";
+    resultsDisplay.innerHTML = scoreStatement + ++userScore + ',' + computerScore;
     return winRound;
+    // is return winRound even needed anymore? I don't think it is...
   } else if (
     lowerPlayerSelection == "scissors" &&
     computerSelection == "rock"
   ) {
     pointsDisplay.innerHTML = "You lose. rock beats scissors";
+    resultsDisplay.innerHTML = scoreStatement + userScore + ',' + ++computerScore;
     return loseRound;
   } else if (lowerPlayerSelection == "paper" && computerSelection == "rock") {
     pointsDisplay.innerHTML = "You win! paper beats rock.";
+    resultsDisplay.innerHTML = scoreStatement + ++userScore + ',' + computerScore;
     return winRound;
   } else if (lowerPlayerSelection == "rock" && computerSelection == "paper") {
     pointsDisplay.innerHTML = "You lose. paper beats rock.";
+    resultsDisplay.innerHTML = scoreStatement + userScore + ',' + ++computerScore;
     return loseRound;
   } else if (
     lowerPlayerSelection == "scissors" &&
     computerSelection == "paper"
   ) {
     pointsDisplay.innerHTML = "You win. scissors beats paper.";
+    resultsDisplay.innerHTML = scoreStatement + ++userScore + ',' + computerScore;
     return winRound;
   } else if (
     lowerPlayerSelection == "paper" &&
     computerSelection == "scissors"
   ) {
     pointsDisplay.innerHTML = "You lose. scissors beats paper.";
+    resultsDisplay.innerHTML = scoreStatement + userScore + ',' + ++computerScore;
     return loseRound;
   } else if (lowerPlayerSelection == "rock" && computerSelection == "rock") {
     pointsDisplay.innerHTML = "It's a tie!";
+    resultsDisplay.innerHTML = scoreStatement + userScore + "," + computerScore;
     return tieRound;
   } else if (lowerPlayerSelection == "paper" && computerSelection == "paper") {
     pointsDisplay.innerHTML = "It's a tie!";
+    resultsDisplay.innerHTML = scoreStatement + userScore + "," + computerScore;
     return tieRound;
   } else if (
     lowerPlayerSelection == "scissors" &&
     computerSelection == "scissors"
   ) {
     pointsDisplay.innerHTML = "It's a tie!";
+    resultsDisplay.innerHTML = scoreStatement + userScore + "," + computerScore;
     return tieRound;
   }
 }
+
+
 
 /*
 Below, I am defining a 'round enum'. 
@@ -67,9 +95,15 @@ matter. it's just like a placeholder for a state (as mentioned earlier).
 
     */
 
-const winRound = "win";
-const loseRound = "lose";
-const tieRound = "tie";
+
+
+/* here, i am taking the logic that tallies points and rounds for the game, 
+but I am taking it out of the game function so that it can be a global variable.
+I don't understand why 100%... is it because the game() function isn't going to 
+be used anymore in the UI? like it isn't needed? */
+
+
+
 
 /* question
 why does game() not have any parameters? I know that it is an anonymous function. 
@@ -93,10 +127,8 @@ function game() {
       I understood correctly. same for line 151.
       */
 
-  console.log(`Current Score: ${userScore}, ${computerScore}`)
-  /*<div class="score">
-    Current Score: `${userScore}, ${computerScore}`
-  </div>; */
+  console.log(`Current Score: ${userScore}, ${computerScore}`);
+  
   for (let i = 0; i < 5; i++) {
     let playerSelection = window.prompt(
       "Make your move: rock, paper, or scissors?"
@@ -111,17 +143,11 @@ function game() {
     let roundStatus = playRound(playerSelection, computerPlay());
     if (roundStatus == winRound) {
       console.log(scoreStatement + ++userScore + ',' + computerScore);
-      /*<div class="rounds">
-        `${scoreStatement} + ${++userScore} + ',' + ${computerScore}`
-      </div>; */
     } else if (roundStatus == loseRound) {
       console.log(scoreStatement + userScore + ',' + ++computerScore);
      
     } else if (roundStatus == tieRound) {
       console.log(scoreStatement + userScore + "," + computerScore);
-      /*<div class="rounds">
-        `${scoreStatement} + ${userScore} + ',' + ${computerScore}
-      </div>; */
     } else {
       console.log("woohoooooooo");
     }
@@ -180,4 +206,6 @@ document.body.appendChild(scissorsBtn);
 
 let pointsDisplay = document.getElementById("points");
 
-let resultsDisplay = document.getElementById('results');
+let resultsDisplay = document.getElementById("results");
+
+let roundsDisplay = document.getElementById('rounds');
