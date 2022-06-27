@@ -32,6 +32,7 @@ function playRound(playerSelection, computerSelection) {
   if (lowerPlayerSelection == "rock" && computerSelection == "scissors") {
     pointsDisplay.innerHTML = "You win! rock beats scissors";
     resultsDisplay.innerHTML = scoreStatement + ++userScore + ',' + computerScore;
+    roundsDisplay.innerHTML = roundStatement + ++roundCount;
     return winRound;
     // is return winRound even needed anymore? I don't think it is...
   } else if (
@@ -40,14 +41,17 @@ function playRound(playerSelection, computerSelection) {
   ) {
     pointsDisplay.innerHTML = "You lose. rock beats scissors";
     resultsDisplay.innerHTML = scoreStatement + userScore + ',' + ++computerScore;
+    roundsDisplay.innerHTML = roundStatement + ++roundCount;
     return loseRound;
   } else if (lowerPlayerSelection == "paper" && computerSelection == "rock") {
     pointsDisplay.innerHTML = "You win! paper beats rock.";
     resultsDisplay.innerHTML = scoreStatement + ++userScore + ',' + computerScore;
+    roundsDisplay.innerHTML = roundStatement + ++roundCount;
     return winRound;
   } else if (lowerPlayerSelection == "rock" && computerSelection == "paper") {
     pointsDisplay.innerHTML = "You lose. paper beats rock.";
     resultsDisplay.innerHTML = scoreStatement + userScore + ',' + ++computerScore;
+    roundsDisplay.innerHTML = roundStatement + ++roundCount;
     return loseRound;
   } else if (
     lowerPlayerSelection == "scissors" &&
@@ -55,6 +59,7 @@ function playRound(playerSelection, computerSelection) {
   ) {
     pointsDisplay.innerHTML = "You win. scissors beats paper.";
     resultsDisplay.innerHTML = scoreStatement + ++userScore + ',' + computerScore;
+    roundsDisplay.innerHTML = roundStatement + ++roundCount;
     return winRound;
   } else if (
     lowerPlayerSelection == "paper" &&
@@ -62,14 +67,17 @@ function playRound(playerSelection, computerSelection) {
   ) {
     pointsDisplay.innerHTML = "You lose. scissors beats paper.";
     resultsDisplay.innerHTML = scoreStatement + userScore + ',' + ++computerScore;
+    roundsDisplay.innerHTML = roundStatement + ++roundCount;
     return loseRound;
   } else if (lowerPlayerSelection == "rock" && computerSelection == "rock") {
     pointsDisplay.innerHTML = "It's a tie!";
     resultsDisplay.innerHTML = scoreStatement + userScore + "," + computerScore;
+    roundsDisplay.innerHTML = roundStatement + ++roundCount;
     return tieRound;
   } else if (lowerPlayerSelection == "paper" && computerSelection == "paper") {
     pointsDisplay.innerHTML = "It's a tie!";
     resultsDisplay.innerHTML = scoreStatement + userScore + "," + computerScore;
+    roundsDisplay.innerHTML = roundStatement + ++roundCount;
     return tieRound;
   } else if (
     lowerPlayerSelection == "scissors" &&
@@ -77,6 +85,7 @@ function playRound(playerSelection, computerSelection) {
   ) {
     pointsDisplay.innerHTML = "It's a tie!";
     resultsDisplay.innerHTML = scoreStatement + userScore + "," + computerScore;
+    roundsDisplay.innerHTML = roundStatement + ++roundCount;
     return tieRound;
   }
 }
