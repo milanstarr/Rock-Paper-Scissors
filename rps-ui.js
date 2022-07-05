@@ -55,21 +55,29 @@ function playRound(playerSelection, computerSelection) {
     resultsDisplay.innerHTML = scoreStatement + userScore + "," + computerScore;
   }
  
+// Question: how can I have the buttons disable at the end of game 
+// without repeating the disabled buttons so many times? 
+// i tried doing an 'else' but it didn't work... idk how to shorten
+// this. 
+
   if (userScore == 5) {
     endDisplay.innerHTML = 'Game over. You win!';
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
   } else if (computerScore == 5) {
     endDisplay.innerHTML = 'Game over. You lose!';
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
   } 
 }
+
 
 //-------------------------------------------------------------------------
 
 const rockBtn = document.createElement("button");
 rockBtn.textContent = "Rock!";
-
-// Below, I am using a 'function reference', so I don't have to
-// write out the entire function when I use the addEventlistener.
-// the function reference is 'handleWhateverEvent'.
 
 const handleRockEvent = () => playRound("rock", computerPlay());
 
@@ -96,3 +104,9 @@ let pointsDisplay = document.getElementById("points");
 let resultsDisplay = document.getElementById("results");
 
 let endDisplay = document.getElementById("end");
+
+const startBtn = document.createElement("button");
+startBtn.textContent = "start over";
+// create a function where everything is cleared. 
+
+
