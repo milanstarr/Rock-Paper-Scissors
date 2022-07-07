@@ -62,18 +62,25 @@ function playRound(playerSelection, computerSelection) {
 
   if (userScore == 5) {
     endDisplay.innerHTML = 'Game over. You win!';
-    rockBtn.disabled = true;
-    paperBtn.disabled = true;
-    scissorsBtn.disabled = true;
   } else if (computerScore == 5) {
     endDisplay.innerHTML = 'Game over. You lose!';
+  }
+
+
+  if (userScore == 5 || computerScore == 5) {
+    //then button appears to restart game
     rockBtn.disabled = true;
     paperBtn.disabled = true;
     scissorsBtn.disabled = true;
-  } 
-}
+    const newGameBtn = document.createElement("button");
+    newGameBtn.textContent = "new game";
+    document.body.appendChild(newGameBtn);
 
-
+    newGameBtn.addEventListener('click', function(){
+      window.location.reload();
+    });
+  }
+  }
 //-------------------------------------------------------------------------
 
 const rockBtn = document.createElement("button");
@@ -104,9 +111,5 @@ let pointsDisplay = document.getElementById("points");
 let resultsDisplay = document.getElementById("results");
 
 let endDisplay = document.getElementById("end");
-
-const startBtn = document.createElement("button");
-startBtn.textContent = "start over";
-// create a function where everything is cleared. 
 
 
