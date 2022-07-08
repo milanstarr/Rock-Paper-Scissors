@@ -69,16 +69,20 @@ function playRound(playerSelection, computerSelection) {
 
   if (userScore == 5 || computerScore == 5) {
     //then button appears to restart game
-    rockBtn.disabled = true;
-    paperBtn.disabled = true;
-    scissorsBtn.disabled = true;
     const newGameBtn = document.createElement("button");
     newGameBtn.textContent = "new game";
-    document.body.appendChild(newGameBtn);
 
+    const newGameDiv = document.querySelector('div.new-game');
+    newGameDiv.appendChild(newGameBtn);
+
+    newGameBtn.style.backgroundColor = 'green';
+    newGameBtn.style.borderColor = 'white';
     newGameBtn.addEventListener('click', function(){
       window.location.reload();
     });
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
   }
   }
 //-------------------------------------------------------------------------
@@ -90,26 +94,44 @@ const handleRockEvent = () => playRound("rock", computerPlay());
 
 rockBtn.addEventListener("click", handleRockEvent);
 
-document.body.appendChild(rockBtn);
+const btnsDiv = document.querySelector("div.btns");
+
+btnsDiv.appendChild(rockBtn);
+
 
 const paperBtn = document.createElement("button");
 paperBtn.textContent = "Paper!";
 const handlePaperEvent = () => playRound("paper", computerPlay());
 paperBtn.addEventListener("click", handlePaperEvent);
 
-document.body.appendChild(paperBtn);
+btnsDiv.appendChild(paperBtn);
 
 const scissorsBtn = document.createElement("button");
 scissorsBtn.textContent = "Scissors!";
 const handleScissorsEvent = () => playRound("scissors", computerPlay());
 scissorsBtn.addEventListener("click", handleScissorsEvent);
 
-document.body.appendChild(scissorsBtn);
+btnsDiv.appendChild(scissorsBtn);
 
 let pointsDisplay = document.getElementById("points");
 
+
 let resultsDisplay = document.getElementById("results");
 
+
 let endDisplay = document.getElementById("end");
+
+//--------------------
+
+paperBtn.style.backgroundColor = 'yellow';
+paperBtn.style.borderColor = 'white';
+
+
+rockBtn.style.backgroundColor = 'pink';
+rockBtn.style.borderColor = 'white';
+
+scissorsBtn.style.backgroundColor = 'orange';
+scissorsBtn.style.borderColor = 'white';
+
 
 
