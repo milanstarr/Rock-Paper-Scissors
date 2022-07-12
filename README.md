@@ -22,7 +22,7 @@ I hope you enjoy!
 ## Play Rock, Paper, Scissors
 
 
-[Access the project](https://www.milanstarr.github.io/Rock-Paper-Scissors/)
+[Access the project](https://milanstarr.github.io/Rock-Paper-Scissors/)
 
 
 ## Credits
