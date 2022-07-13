@@ -55,10 +55,6 @@ function playRound(playerSelection, computerSelection) {
     resultsDisplay.innerHTML = scoreStatement + userScore + "," + computerScore;
   }
  
-// Question: how can I have the buttons disable at the end of game 
-// without repeating the disabled buttons so many times? 
-// i tried doing an 'else' but it didn't work... idk how to shorten
-// this. 
 
   if (userScore == 5) {
     endDisplay.innerHTML = 'Game over. You win!';
@@ -77,6 +73,8 @@ function playRound(playerSelection, computerSelection) {
 
     newGameBtn.style.backgroundColor = 'green';
     newGameBtn.style.borderColor = 'white';
+    newGameBtn.style.fontSize = '50px';
+    newGameBtn.style.padding = '20px 30px';
     newGameBtn.addEventListener('click', function(){
       window.location.reload();
     });
@@ -125,13 +123,20 @@ let endDisplay = document.getElementById("end");
 
 paperBtn.style.backgroundColor = 'yellow';
 paperBtn.style.borderColor = 'white';
+paperBtn.style.fontSize = '50px';
+paperBtn.style.margin = '15px'
+paperBtn.style.padding = '20px 30px';
 
 
 rockBtn.style.backgroundColor = 'pink';
 rockBtn.style.borderColor = 'white';
+rockBtn.style.fontSize = '50px';
+rockBtn.style.padding = '20px 30px';
 
 scissorsBtn.style.backgroundColor = 'orange';
 scissorsBtn.style.borderColor = 'white';
+scissorsBtn.style.fontSize = '50px';
+scissorsBtn.style.padding = '20px 30px';
 
 
 
