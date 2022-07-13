@@ -8,5 +8,10 @@
 
 .messages {
     text-align: center;
+    font-size: 40px;
+}
+
+#end {
+    font-size: 40px;
 }
 
